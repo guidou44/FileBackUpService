@@ -12,3 +12,16 @@ D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\Prism.xml
 D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\System.ValueTuple.xml
 D:\Guillaume\Desktop\Internet Explorer\FileBackupService\obj\Release\FileBackup.csprojAssemblyReference.cache
 D:\Guillaume\Desktop\Internet Explorer\FileBackupService\obj\Release\FileBackup.csproj.CopyComplete
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\FileBackupService.exe.config
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\FileBackupService.exe
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\FileBackupService.pdb
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\Prism.dll
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\System.ValueTuple.dll
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\Common.pdb
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\Prism.pdb
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\Prism.xml
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\System.ValueTuple.xml
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\obj\Release\FileBackup.csprojAssemblyReference.cache
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\obj\Release\FileBackup.csproj.CopyComplete
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\obj\Release\FileBackupService.exe
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\obj\Release\FileBackupService.pdb

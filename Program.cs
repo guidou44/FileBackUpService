@@ -81,10 +81,11 @@ namespace FileBackupService
             }
 
             var directory = source as DirectoryInfo;
-            var subDirectoryDestinationPath = Path.Combine(destDirName, directory.Name);
-            if (!Directory.Exists(subDirectoryDestinationPath))
+            var subDirPath = GetSubDirectoryLocalPath(directory);
+            var DirectoryDestinationPath = Path.Combine(destDirName, subDirPath);
+            if (!Directory.Exists(DirectoryDestinationPath))
             {
-                Directory.CreateDirectory(subDirectoryDestinationPath);
+                Directory.CreateDirectory(DirectoryDestinationPath);
                 Console.WriteLine($"Creating {directory.Name}");
             }
 
@@ -94,13 +95,13 @@ namespace FileBackupService
             {
                 try
                 {
-                    string temppath = Path.Combine(subDirectoryDestinationPath, file.Name);
+                    string temppath = Path.Combine(DirectoryDestinationPath, file.Name);
                     file.CopyTo(temppath, true);
                     Console.WriteLine("Copying file");
                 }
                 catch (Exception e)
                 {
-                    Common.Reports.Reporter.LogException(e);
+                    //Common.Reports.Reporter.LogException(e);
                     continue;
                 }
             }
@@ -111,11 +112,24 @@ namespace FileBackupService
                 foreach (DirectoryInfo subdir in subDirectories)
                 {
                     if (subdir.Name.Contains(".git")) continue;
-                    string tempPath = Path.Combine(subDirectoryDestinationPath, subdir.Name);
+                    string tempPath = Path.Combine(DirectoryDestinationPath, subdir.Name);
                     DirectoryCopy(subdir.FullName, tempPath, copySubDirs);
                     Console.WriteLine($"Copying Sub directory {subdir.Name}");
                 }
             }
+        }
+
+        private static string GetSubDirectoryLocalPath(DirectoryInfo subDir)
+        {
+            var outputPath = subDir.Name;
+            var directParent = subDir;
+            while (directParent.Parent.FullName != _sourceDirName)
+            {
+                outputPath = Path.Combine(directParent.Parent.Name, outputPath);
+                directParent = directParent.Parent;
+            }
+
+            return outputPath;
         }
     }
 }

@@ -4,3 +4,9 @@ D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Debug\FileBackupSer
 D:\Guillaume\Desktop\Internet Explorer\FileBackupService\obj\Debug\FileBackup.csprojAssemblyReference.cache
 D:\Guillaume\Desktop\Internet Explorer\FileBackupService\obj\Debug\FileBackupService.exe
 D:\Guillaume\Desktop\Internet Explorer\FileBackupService\obj\Debug\FileBackupService.pdb
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\obj\Debug\FileBackup.csprojAssemblyReference.cache
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\obj\Debug\FileBackupService.exe
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\obj\Debug\FileBackupService.pdb
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Debug\FileBackupService.exe.config
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Debug\FileBackupService.exe
+C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Debug\FileBackupService.pdb
