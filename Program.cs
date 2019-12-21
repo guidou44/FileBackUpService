@@ -20,24 +20,19 @@ namespace FileBackupService
             WhatchForFileChange();
         }
 
-        static void InitializeComponent()
-        {
-            _sourceDirName = @"" + ConfigurationManager.AppSettings.Get("SourceFile");
-            _destinationDirName = @"" + ConfigurationManager.AppSettings.Get("DestinationFile");
-        }
+
 
         private static void WhatchForFileChange()
         {
             using (FileSystemWatcher watcher = new FileSystemWatcher())
             {
                 watcher.Path = _sourceDirName;
-                watcher.NotifyFilter = NotifyFilters.LastAccess
-                                     | NotifyFilters.LastWrite
+                watcher.NotifyFilter = NotifyFilters.LastWrite
                                      | NotifyFilters.FileName
                                      | NotifyFilters.DirectoryName;
+                watcher.IncludeSubdirectories = true;
                 watcher.Changed += OnChanged;
                 watcher.Created += OnChanged;
-                watcher.Deleted += OnChanged;
                 watcher.Renamed += OnChanged;
                 watcher.EnableRaisingEvents = true;
 
@@ -48,34 +43,77 @@ namespace FileBackupService
             }
         }
 
+        static void InitializeComponent()
+        {
+            _sourceDirName = @"" + ConfigurationManager.AppSettings.Get("SourceFile");
+            _destinationDirName = @"" + ConfigurationManager.AppSettings.Get("DestinationFile");
+        }
+
         private static void OnChanged(object source, FileSystemEventArgs e)
         {
             Thread.Sleep(1000);
-            DirectoryCopy(_sourceDirName, _destinationDirName, true);
+            DirectoryCopy(e.FullPath, _destinationDirName, true);
         }
 
-        private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs = true)
+        private static void DirectoryCopy(string sourceName, string destDirName, bool copySubDirs = true)
         {
-            DirectoryInfo sourceDir = new DirectoryInfo(sourceDirName);
-            if (!sourceDir.Exists) throw new ArgumentNullException("Specified source directory do not exist");
-            if (!Directory.Exists(destDirName)) Directory.CreateDirectory(destDirName);
-
-            FileInfo[] files = sourceDir.GetFiles();
-            foreach (FileInfo file in files)
+            bool IsDirecotry = false;
+            FileSystemInfo source;
+            FileAttributes sourceAttribute = File.GetAttributes(sourceName);
+            if (sourceAttribute.HasFlag(FileAttributes.Directory))
             {
-                string temppath = Path.Combine(destDirName, file.Name);
-                file.CopyTo(temppath, true);
-                Console.WriteLine("Copying file");
+                source = new DirectoryInfo(sourceName);
+                IsDirecotry = true;
             }
 
-            DirectoryInfo[] subDirectories = sourceDir.GetDirectories();
+            else source = new FileInfo(sourceName);
+
+            if (!source.Exists) throw new ArgumentNullException("Specified source Directory/File does not exist");
+            if (!Directory.Exists(destDirName)) Directory.CreateDirectory(destDirName);
+
+            if (!IsDirecotry)
+            {
+                var file = source as FileInfo;
+                string temppath = Path.Combine(destDirName, file.Name);
+                file.CopyTo(temppath, true);
+                Console.WriteLine($"Copying file {file.Name}");
+                return;
+            }
+
+            var directory = source as DirectoryInfo;
+            var subDirectoryDestinationPath = Path.Combine(destDirName, directory.Name);
+            if (!Directory.Exists(subDirectoryDestinationPath))
+            {
+                Directory.CreateDirectory(subDirectoryDestinationPath);
+                Console.WriteLine($"Creating {directory.Name}");
+            }
+
+            FileInfo[] files = directory.GetFiles();
+
+            foreach (FileInfo file in files)
+            {
+                try
+                {
+                    string temppath = Path.Combine(subDirectoryDestinationPath, file.Name);
+                    file.CopyTo(temppath, true);
+                    Console.WriteLine("Copying file");
+                }
+                catch (Exception e)
+                {
+                    Common.Reports.Reporter.LogException(e);
+                    continue;
+                }
+            }
+
+            DirectoryInfo[] subDirectories = directory.GetDirectories();
             if (copySubDirs)
             {
                 foreach (DirectoryInfo subdir in subDirectories)
                 {
-                    string tempPath = Path.Combine(destDirName, subdir.Name);
+                    if (subdir.Name.Contains(".git")) continue;
+                    string tempPath = Path.Combine(subDirectoryDestinationPath, subdir.Name);
                     DirectoryCopy(subdir.FullName, tempPath, copySubDirs);
-                    Console.WriteLine("Copying Sub directory");
+                    Console.WriteLine($"Copying Sub directory {subdir.Name}");
                 }
             }
         }
