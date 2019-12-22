@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FileBackupService.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -54,6 +55,16 @@ namespace FileBackupService
         {
             Thread.Sleep(1000);
             DirectoryCopy(e.FullPath, _destinationDirName, true);
+        }
+
+        private static void DeleteUnmatchingFiles(string sourcePath, string destPath)
+        {
+            var sourceFiles = new DirectoryInfo(sourcePath).GetFiles();
+            var destFiles = new DirectoryInfo(destPath).GetFiles();
+            var fileCompare = new FileCompare();
+
+            var destOnly = (from file in destFiles select file).Except(sourceFiles, fileCompare);
+            destOnly.ToList().ForEach(F => File.Delete(F.FullName));
         }
 
         private static void DirectoryCopy(string sourceName, string destDirName, bool copySubDirs = true)
@@ -119,6 +130,8 @@ namespace FileBackupService
                     Console.WriteLine($"Copying Sub directory {subdir.Name}");
                 }
             }
+
+
         }
 
         private static string GetSubPath(FileSystemInfo fileSysInfo)
