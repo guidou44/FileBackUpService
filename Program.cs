@@ -13,6 +13,7 @@ namespace FileBackupService
     {
         private static string _sourceDirName;
         private static string _destinationDirName;
+        private static bool letProcessEvent = false;
 
         static void Main(string[] args)
         {
@@ -27,8 +28,8 @@ namespace FileBackupService
             using (FileSystemWatcher watcher = new FileSystemWatcher())
             {
                 watcher.Path = _sourceDirName;
-                watcher.NotifyFilter = NotifyFilters.LastWrite
-                                     | NotifyFilters.FileName
+                watcher.NotifyFilter = 
+                                      NotifyFilters.FileName
                                      | NotifyFilters.DirectoryName;
                 watcher.IncludeSubdirectories = true;
                 watcher.Changed += OnChanged;
@@ -69,24 +70,25 @@ namespace FileBackupService
             else source = new FileInfo(sourceName);
 
             if (!source.Exists) throw new ArgumentNullException("Specified source Directory/File does not exist");
-            if (!Directory.Exists(destDirName)) Directory.CreateDirectory(destDirName);
+            //if (!Directory.Exists(destDirName)) Directory.CreateDirectory(destDirName);
 
             if (!IsDirecotry)
             {
                 var file = source as FileInfo;
-                string temppath = Path.Combine(destDirName, file.Name);
-                file.CopyTo(temppath, true);
-                Console.WriteLine($"Copying file {file.Name}");
+                var subPath = GetSubPath(file);
+                var tempPath = Path.Combine(destDirName, subPath);
+                file.CopyTo(tempPath, true);
+                Console.WriteLine($"Copying file {file.FullName} to {tempPath}");
                 return;
             }
 
             var directory = source as DirectoryInfo;
-            var subDirPath = GetSubDirectoryLocalPath(directory);
+            var subDirPath = GetSubPath(directory);
             var DirectoryDestinationPath = Path.Combine(destDirName, subDirPath);
             if (!Directory.Exists(DirectoryDestinationPath))
             {
                 Directory.CreateDirectory(DirectoryDestinationPath);
-                Console.WriteLine($"Creating {directory.Name}");
+                Console.WriteLine($"Creating {directory.FullName} to {DirectoryDestinationPath}");
             }
 
             FileInfo[] files = directory.GetFiles();
@@ -119,17 +121,37 @@ namespace FileBackupService
             }
         }
 
-        private static string GetSubDirectoryLocalPath(DirectoryInfo subDir)
+        private static string GetSubPath(FileSystemInfo fileSysInfo)
         {
-            var outputPath = subDir.Name;
-            var directParent = subDir;
-            while (directParent.Parent.FullName != _sourceDirName)
+            var outputPath = fileSysInfo.Name;
+            var directParent = fileSysInfo;
+
+
+            while (GetDirectParent(directParent).FullName != _sourceDirName)
             {
-                outputPath = Path.Combine(directParent.Parent.Name, outputPath);
-                directParent = directParent.Parent;
+                outputPath = Path.Combine(GetDirectParent(directParent).Name, outputPath);
+                directParent = GetDirectParent(directParent);
             }
 
             return outputPath;
+        }
+
+        private static DirectoryInfo GetDirectParent(FileSystemInfo child)
+        {
+            FileInfo fileChild = null;
+            DirectoryInfo directoryChild = null;
+            if (child.GetType().Name == nameof(DirectoryInfo))
+            {
+                directoryChild = child as DirectoryInfo;
+                return directoryChild.Parent;
+            }
+            else if (child.GetType().Name == nameof(FileInfo))
+            {
+                fileChild = child as FileInfo;
+                return fileChild.Directory;
+            }
+
+            else throw new ArgumentException("Unmanaged type of FileSysteminfo");
         }
     }
 }
