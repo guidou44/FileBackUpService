@@ -14,15 +14,12 @@ namespace FileBackupService
     {
         private static string _sourceDirName;
         private static string _destinationDirName;
-        private static bool letProcessEvent = false;
 
         static void Main(string[] args)
         {
             InitializeComponent();
             WhatchForFileChange();
         }
-
-
 
         private static void WhatchForFileChange()
         {
@@ -72,7 +69,7 @@ namespace FileBackupService
             foreach (var file in destOnlyFiles)
             {
                 File.Delete(file.FullName);
-                Console.WriteLine($"Deleted file {file.FullName}");
+                //Console.WriteLine($"Deleted file {file.FullName}");
             }
 
             //Directories
@@ -111,7 +108,7 @@ namespace FileBackupService
                 var subPath = GetSubPath(file);
                 var tempPath = Path.Combine(destDirName, subPath);
                 file.CopyTo(tempPath, true);
-                Console.WriteLine($"Copying file {file.FullName} to {tempPath}");
+                //Console.WriteLine($"Copying file {file.FullName} to {tempPath}");
                 var tempDir = new DirectoryInfo(tempPath);
                 DeleteUnmatchingFilesFolders(file.Directory.FullName, tempDir.Parent.FullName);
                 return;
@@ -123,7 +120,7 @@ namespace FileBackupService
             if (!Directory.Exists(DirectoryDestinationPath))
             {
                 Directory.CreateDirectory(DirectoryDestinationPath);
-                Console.WriteLine($"Creating {directory.FullName} to {DirectoryDestinationPath}");
+                //Console.WriteLine($"Creating {directory.FullName} to {DirectoryDestinationPath}");
                 var tempDirectory = new DirectoryInfo(DirectoryDestinationPath);
                 DeleteUnmatchingFilesFolders(directory.Parent.FullName, tempDirectory.Parent.FullName);
             }
@@ -136,7 +133,7 @@ namespace FileBackupService
                 {
                     string temppath = Path.Combine(DirectoryDestinationPath, file.Name);
                     file.CopyTo(temppath, true);
-                    Console.WriteLine("Copying file");
+                    //Console.WriteLine("Copying file");
                 }
                 catch (Exception e)
                 {
@@ -144,8 +141,6 @@ namespace FileBackupService
                     continue;
                 }
             }
-
-            
 
             DirectoryInfo[] subDirectories = directory.GetDirectories();
             if (copySubDirs)
@@ -155,7 +150,7 @@ namespace FileBackupService
                     if (subdir.Name.Contains(".git")) continue;
                     string tempPath = Path.Combine(DirectoryDestinationPath, subdir.Name);
                     DirectoryCopy(subdir.FullName, tempPath, copySubDirs);
-                    Console.WriteLine($"Copying Sub directory {subdir.Name}");
+                    //Console.WriteLine($"Copying Sub directory {subdir.Name}");
                 }
             }
         }
