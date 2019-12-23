@@ -57,14 +57,36 @@ namespace FileBackupService
             DirectoryCopy(e.FullPath, _destinationDirName, true);
         }
 
-        private static void DeleteUnmatchingFiles(string sourcePath, string destPath)
+        private static void DeleteUnmatchingFilesFolders(string sourcePath, string destPath)
         {
-            var sourceFiles = new DirectoryInfo(sourcePath).GetFiles();
-            var destFiles = new DirectoryInfo(destPath).GetFiles();
+            var source = new DirectoryInfo(sourcePath);
+            var dest = new DirectoryInfo(destPath);
+
+            //Files
+            var sourceFiles = source.GetFiles();
+            var destFiles = dest.GetFiles();
             var fileCompare = new FileCompare();
 
-            var destOnly = (from file in destFiles select file).Except(sourceFiles, fileCompare);
-            destOnly.ToList().ForEach(F => File.Delete(F.FullName));
+            var destOnlyFiles = (from file in destFiles select file).Except(sourceFiles, fileCompare);
+
+            foreach (var file in destOnlyFiles)
+            {
+                File.Delete(file.FullName);
+                Console.WriteLine($"Deleted file {file.FullName}");
+            }
+
+            //Directories
+            var sourceSubDir = source.GetDirectories();
+            var destSubDir = dest.GetDirectories();
+            var dirCompare = new DirectoryCompare();
+
+            var destOnlyDir = (from sub in destSubDir select sub).Except(sourceSubDir, dirCompare);
+
+            foreach (var sub in destOnlyDir)
+            {
+                Directory.Delete(sub.FullName, true);
+                Console.WriteLine($"Deleted directory {sub.FullName}");
+            }
         }
 
         private static void DirectoryCopy(string sourceName, string destDirName, bool copySubDirs = true)
@@ -90,6 +112,8 @@ namespace FileBackupService
                 var tempPath = Path.Combine(destDirName, subPath);
                 file.CopyTo(tempPath, true);
                 Console.WriteLine($"Copying file {file.FullName} to {tempPath}");
+                var tempDir = new DirectoryInfo(tempPath);
+                DeleteUnmatchingFilesFolders(file.Directory.FullName, tempDir.Parent.FullName);
                 return;
             }
 
@@ -100,6 +124,8 @@ namespace FileBackupService
             {
                 Directory.CreateDirectory(DirectoryDestinationPath);
                 Console.WriteLine($"Creating {directory.FullName} to {DirectoryDestinationPath}");
+                var tempDirectory = new DirectoryInfo(DirectoryDestinationPath);
+                DeleteUnmatchingFilesFolders(directory.Parent.FullName, tempDirectory.Parent.FullName);
             }
 
             FileInfo[] files = directory.GetFiles();
@@ -119,6 +145,8 @@ namespace FileBackupService
                 }
             }
 
+            
+
             DirectoryInfo[] subDirectories = directory.GetDirectories();
             if (copySubDirs)
             {
@@ -130,8 +158,6 @@ namespace FileBackupService
                     Console.WriteLine($"Copying Sub directory {subdir.Name}");
                 }
             }
-
-
         }
 
         private static string GetSubPath(FileSystemInfo fileSysInfo)
