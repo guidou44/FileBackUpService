@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileWatchManager.cs" />
     <Compile Include="Helpers\DirectoryCompare.cs" />
     <Compile Include="Helpers\FileCompare.cs" />
     <Compile Include="Program.cs" />
