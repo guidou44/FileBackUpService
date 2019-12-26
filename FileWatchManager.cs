@@ -14,6 +14,7 @@ namespace FileBackupService
     {
         private string _sourceDirName;
         private string _destinationDirName;
+        private FileSystemWatcher _watcher;
 
         public FileWatchManager()
         {
@@ -23,6 +24,15 @@ namespace FileBackupService
         public void Start()
         {
             WhatchForFileChange();
+        }
+
+        public void Stop()
+        {
+            _watcher.EnableRaisingEvents = false;
+            _watcher.Changed -= OnChanged;
+            _watcher.Created -= OnChanged;
+            _watcher.Renamed -= OnChanged;
+            _watcher.Dispose();
         }
 
         #region Private Methods
@@ -112,7 +122,7 @@ namespace FileBackupService
                 }
                 catch (Exception e)
                 {
-                    //Common.Reports.Reporter.LogException(e);
+                    Common.Reports.Reporter.LogException(e);
                     continue;
                 }
             }
@@ -183,17 +193,17 @@ namespace FileBackupService
 
         private void WhatchForFileChange()
         {
-            using (FileSystemWatcher watcher = new FileSystemWatcher())
+            using (_watcher = new FileSystemWatcher())
             {
-                watcher.Path = _sourceDirName;
-                watcher.NotifyFilter =
+                _watcher.Path = _sourceDirName;
+                _watcher.NotifyFilter =
                                       NotifyFilters.FileName
                                      | NotifyFilters.DirectoryName;
-                watcher.IncludeSubdirectories = true;
-                watcher.Changed += OnChanged;
-                watcher.Created += OnChanged;
-                watcher.Renamed += OnChanged;
-                watcher.EnableRaisingEvents = true;
+                _watcher.IncludeSubdirectories = true;
+                _watcher.Changed += OnChanged;
+                _watcher.Created += OnChanged;
+                _watcher.Renamed += OnChanged;
+                _watcher.EnableRaisingEvents = true;
 
                 while (true)
                 {

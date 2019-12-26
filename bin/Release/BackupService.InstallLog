@@ -1,0 +1,21 @@
+﻿Uninstalling assembly 'C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\BackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\BackupService.exe
+   logfile = C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\BackupService.InstallLog
+Removing EventLog source BackupService.
+Service BackupService is being removed from the system...
+Service BackupService was successfully removed from the system.
+Installing assembly 'C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\BackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\BackupService.exe
+   logfile = C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\BackupService.InstallLog
+Installing service BackupService...
+Service BackupService has been successfully installed.
+Creating EventLog source BackupService in log Application...
+Committing assembly 'C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\BackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\BackupService.exe
+   logfile = C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\BackupService.InstallLog
