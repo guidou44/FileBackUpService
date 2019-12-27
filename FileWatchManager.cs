@@ -15,6 +15,7 @@ namespace FileBackupService
         private string _sourceDirName;
         private string _destinationDirName;
         private FileSystemWatcher _watcher;
+        private bool _isRunning;
 
         public FileWatchManager()
         {
@@ -23,11 +24,13 @@ namespace FileBackupService
 
         public void Start()
         {
+            _isRunning = true;
             WhatchForFileChange();
         }
 
         public void Stop()
         {
+            _isRunning = false;
             _watcher.EnableRaisingEvents = false;
             _watcher.Changed -= OnChanged;
             _watcher.Created -= OnChanged;
@@ -42,6 +45,7 @@ namespace FileBackupService
             var source = new DirectoryInfo(sourcePath);
             var dest = new DirectoryInfo(destPath);
 
+
             //Files
             var sourceFiles = source.GetFiles();
             var destFiles = dest.GetFiles();
@@ -51,8 +55,14 @@ namespace FileBackupService
 
             foreach (var file in destOnlyFiles)
             {
-                File.Delete(file.FullName);
-                //Console.WriteLine($"Deleted file {file.FullName}");
+                try
+                {
+                    File.Delete(file.FullName);
+                }
+                catch (Exception e)
+                {
+                    Common.Reports.Reporter.LogException(e);
+                }
             }
 
             //Directories
@@ -64,8 +74,15 @@ namespace FileBackupService
 
             foreach (var sub in destOnlyDir)
             {
-                Directory.Delete(sub.FullName, true);
-                Console.WriteLine($"Deleted directory {sub.FullName}");
+                try
+                {
+                    Directory.Delete(sub.FullName, true);
+                }
+                catch (Exception e)
+                {
+                    Common.Reports.Reporter.LogException(e);
+                    continue;
+                }
             }
         }
 
@@ -85,18 +102,26 @@ namespace FileBackupService
             if (!source.Exists) throw new ArgumentNullException("Specified source Directory/File does not exist");
             //if (!Directory.Exists(destDirName)) Directory.CreateDirectory(destDirName);
 
+
             if (!IsDirecotry)
             {
-                var file = source as FileInfo;
-                var subPath = GetSubPath(file);
-                var tempPath = Path.Combine(destDirName, subPath);
-                var tempSubDir = new FileInfo(tempPath).Directory.FullName;
-                InstantiateMissingSubDirectories(tempSubDir);
-                file.CopyTo(tempPath, true);
-                //Console.WriteLine($"Copying file {file.FullName} to {tempPath}");
-                var tempDir = new DirectoryInfo(tempPath);
-                DeleteUnmatchingFilesFolders(file.Directory.FullName, tempDir.Parent.FullName);
-                return;
+                try
+                {
+                    var file = source as FileInfo;
+                    var subPath = GetSubPath(file);
+                    var tempPath = Path.Combine(destDirName, subPath);
+                    var tempSubDir = new FileInfo(tempPath).Directory.FullName;
+                    InstantiateMissingSubDirectories(tempSubDir);
+                    file.CopyTo(tempPath, true);
+                    var tempDir = new DirectoryInfo(tempPath);
+                    DeleteUnmatchingFilesFolders(file.Directory.FullName, tempDir.Parent.FullName);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    Common.Reports.Reporter.LogException(e);
+                    return;
+                }
             }
 
             var directory = source as DirectoryInfo;
@@ -105,7 +130,6 @@ namespace FileBackupService
             if (!Directory.Exists(DirectoryDestinationPath))
             {
                 Directory.CreateDirectory(DirectoryDestinationPath);
-                //Console.WriteLine($"Creating {directory.FullName} to {DirectoryDestinationPath}");
                 var tempDirectory = new DirectoryInfo(DirectoryDestinationPath);
                 DeleteUnmatchingFilesFolders(directory.Parent.FullName, tempDirectory.Parent.FullName);
             }
@@ -118,7 +142,6 @@ namespace FileBackupService
                 {
                     string temppath = Path.Combine(DirectoryDestinationPath, file.Name);
                     file.CopyTo(temppath, true);
-                    //Console.WriteLine("Copying file");
                 }
                 catch (Exception e)
                 {
@@ -135,7 +158,6 @@ namespace FileBackupService
                     if (subdir.Name.Contains(".git")) continue;
                     string tempPath = Path.Combine(DirectoryDestinationPath, subdir.Name);
                     DirectoryCopy(subdir.FullName, tempPath, copySubDirs);
-                    //Console.WriteLine($"Copying Sub directory {subdir.Name}");
                 }
             }
         }
@@ -187,7 +209,6 @@ namespace FileBackupService
 
         private void OnChanged(object source, FileSystemEventArgs e)
         {
-            Thread.Sleep(1000);
             DirectoryCopy(e.FullPath, _destinationDirName, true);
         }
 
@@ -205,9 +226,9 @@ namespace FileBackupService
                 _watcher.Renamed += OnChanged;
                 _watcher.EnableRaisingEvents = true;
 
-                while (true)
+                while (_isRunning)
                 {
-                    Thread.Sleep(5000);
+                    Thread.Sleep(1000);
                 }
             }
         }

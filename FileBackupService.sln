@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileBackup", "FileBackup.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerBackupService", "..\ServerBackupService\ServerBackupService.csproj", "{1D0697B9-0D1D-4179-8590-14E8D6E67C80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackupService", "..\BackupService\BackupService.csproj", "{60758049-43D8-4EA1-886D-41A9057954C0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{1D0697B9-0D1D-4179-8590-14E8D6E67C80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D0697B9-0D1D-4179-8590-14E8D6E67C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D0697B9-0D1D-4179-8590-14E8D6E67C80}.Release|Any CPU.Build.0 = Release|Any CPU
-		{60758049-43D8-4EA1-886D-41A9057954C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{60758049-43D8-4EA1-886D-41A9057954C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{60758049-43D8-4EA1-886D-41A9057954C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{60758049-43D8-4EA1-886D-41A9057954C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

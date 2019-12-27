@@ -19,3 +19,14 @@ Affected parameters are:
    logtoconsole = 
    assemblypath = C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\BackupService.exe
    logfile = C:\Users\guim_\Documents\My_Projects\FileBackUpService\bin\Release\BackupService.InstallLog
+Uninstalling assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\BackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\BackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\BackupService.InstallLog
+Removing EventLog source BackupService.
+Warning: The source BackupService is not registered on the local machine.
+Service BackupService is being removed from the system...
+An exception occurred during the uninstallation of the System.ServiceProcess.ServiceInstaller installer.
+System.ComponentModel.Win32Exception: The specified service does not exist as an installed service
+An exception occurred while uninstalling. This exception will be ignored and the uninstall will continue. However, the application might not be fully uninstalled after the uninstall is complete.

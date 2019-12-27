@@ -1,6 +1,6 @@
 
 *************************Exception******************************
-DateTime: 27-12-2019 11:09:06
+DateTime: 27-12-2019 11:02:05
 Type: System.UnauthorizedAccessException
 Source: mscorlib
 TargetSite: Void DeleteHelper(System.String, System.String, Boolean, Boolean, WIN32_FIND_DATA ByRef)
@@ -11,7 +11,19 @@ Stacktrace:    at System.IO.Directory.DeleteHelper(String fullPath, String userP
 
 
 *************************Exception******************************
-DateTime: 27-12-2019 11:09:08
+DateTime: 27-12-2019 11:02:06
+Type: System.IO.DirectoryNotFoundException
+Source: mscorlib
+TargetSite: Void WinIOError(Int32, System.String)
+Message: Could not find a part of the path 'Y:\Guillaume\Backup_server\Internet Explorer\FileBackupService\bin\Debug\Exception_Logs\GeneralExceptions.txt'.
+Stacktrace:    at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.FileInfo.CopyTo(String destFileName, Boolean overwrite)
+   at FileBackupService.FileWatchManager.DirectoryCopy(String sourceName, String destDirName, Boolean copySubDirs) in D:\Guillaume\Desktop\Internet Explorer\FileBackupService\FileWatchManager.cs:line 143
+
+
+*************************Exception******************************
+DateTime: 27-12-2019 11:02:22
 Type: System.UnauthorizedAccessException
 Source: mscorlib
 TargetSite: Void DeleteHelper(System.String, System.String, Boolean, Boolean, WIN32_FIND_DATA ByRef)
@@ -22,23 +34,12 @@ Stacktrace:    at System.IO.Directory.DeleteHelper(String fullPath, String userP
 
 
 *************************Exception******************************
-DateTime: 27-12-2019 11:26:01
+DateTime: 27-12-2019 13:52:19
 Type: System.UnauthorizedAccessException
 Source: mscorlib
 TargetSite: Void DeleteHelper(System.String, System.String, Boolean, Boolean, WIN32_FIND_DATA ByRef)
 Message: Access to the path '229a522bc7a2423e83944da508471f2251d2db' is denied.
 Stacktrace:    at System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
    at System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
-   at FileBackupService.FileWatchManager.DeleteUnmatchingFilesFolders(String sourcePath, String destPath) in D:\Guillaume\Desktop\Internet Explorer\FileBackupService\FileWatchManager.cs:line 78
-
-
-*************************Exception******************************
-DateTime: 27-12-2019 11:26:05
-Type: System.UnauthorizedAccessException
-Source: mscorlib
-TargetSite: Void DeleteHelper(System.String, System.String, Boolean, Boolean, WIN32_FIND_DATA ByRef)
-Message: Access to the path '229a522bc7a2423e83944da508471f2251d2db' is denied.
-Stacktrace:    at System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
-   at System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
-   at FileBackupService.FileWatchManager.DeleteUnmatchingFilesFolders(String sourcePath, String destPath) in D:\Guillaume\Desktop\Internet Explorer\FileBackupService\FileWatchManager.cs:line 78
+   at FileBackupService.FileWatchManager.DeleteUnmatchingFilesFolders(String sourcePath, String destPath) in D:\Guillaume\Desktop\Internet Explorer\FileBackupService\FileWatchManager.cs:line 79
 

@@ -21,3 +21,158 @@ Affected parameters are:
    logtoconsole = 
    logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
    assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+Uninstalling assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Removing EventLog source Service1.
+Service Service1 is being removed from the system...
+Service Service1 was successfully removed from the system.
+Installing assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Installing service Service1...
+Service Service1 has been successfully installed.
+Creating EventLog source Service1 in log Application...
+Committing assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Uninstalling assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Removing EventLog source Service1.
+Service Service1 is being removed from the system...
+Service Service1 was successfully removed from the system.
+Installing assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Installing service Service1...
+Service Service1 has been successfully installed.
+Creating EventLog source Service1 in log Application...
+Committing assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Uninstalling assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Removing EventLog source Service1.
+Service Service1 is being removed from the system...
+Service Service1 was successfully removed from the system.
+Installing assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Installing service Service1...
+Service Service1 has been successfully installed.
+Creating EventLog source Service1 in log Application...
+Committing assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Uninstalling assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Removing EventLog source Service1.
+Service Service1 is being removed from the system...
+Service Service1 was successfully removed from the system.
+Installing assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Installing service Service1...
+Service Service1 has been successfully installed.
+Creating EventLog source Service1 in log Application...
+Committing assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Uninstalling assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Removing EventLog source Service1.
+Service Service1 is being removed from the system...
+Service Service1 was successfully removed from the system.
+Installing assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Installing service Service1...
+Service Service1 has been successfully installed.
+Creating EventLog source Service1 in log Application...
+Committing assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Uninstalling assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Removing EventLog source Service1.
+Service Service1 is being removed from the system...
+Service Service1 was successfully removed from the system.
+Installing assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Installing service Service1...
+Service Service1 has been successfully installed.
+Creating EventLog source Service1 in log Application...
+Committing assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Uninstalling assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Removing EventLog source Service1.
+Service Service1 is being removed from the system...
+Service Service1 was successfully removed from the system.
+Installing assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Installing service FileBackupService...
+Service FileBackupService has been successfully installed.
+Creating EventLog source FileBackupService in log Application...
+Committing assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Uninstalling assembly 'D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   assemblypath = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.exe
+   logfile = D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\ServerBackupService.InstallLog
+Removing EventLog source FileBackupService.
+Service FileBackupService is being removed from the system...
+Service FileBackupService was successfully removed from the system.
