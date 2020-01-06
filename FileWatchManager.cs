@@ -81,7 +81,6 @@ namespace FileBackupService
                 catch (Exception e)
                 {
                     Common.Reports.Reporter.LogException(e);
-                    continue;
                 }
             }
         }
@@ -105,23 +104,23 @@ namespace FileBackupService
 
             if (!IsDirecotry)
             {
-                try
-                {
                     var file = source as FileInfo;
                     var subPath = GetSubPath(file);
                     var tempPath = Path.Combine(destDirName, subPath);
                     var tempSubDir = new FileInfo(tempPath).Directory.FullName;
+                try
+                {
                     InstantiateMissingSubDirectories(tempSubDir);
                     file.CopyTo(tempPath, true);
                     var tempDir = new DirectoryInfo(tempPath);
                     DeleteUnmatchingFilesFolders(file.Directory.FullName, tempDir.Parent.FullName);
-                    return;
                 }
                 catch (Exception e)
                 {
                     Common.Reports.Reporter.LogException(e);
                     return;
                 }
+                return;
             }
 
             var directory = source as DirectoryInfo;
@@ -131,7 +130,14 @@ namespace FileBackupService
             {
                 Directory.CreateDirectory(DirectoryDestinationPath);
                 var tempDirectory = new DirectoryInfo(DirectoryDestinationPath);
-                DeleteUnmatchingFilesFolders(directory.Parent.FullName, tempDirectory.Parent.FullName);
+                try
+                {
+                    DeleteUnmatchingFilesFolders(directory.Parent.FullName, tempDirectory.Parent.FullName);
+                }
+                catch (Exception e)
+                {
+                    Common.Reports.Reporter.LogException(e);
+                }
             }
 
             FileInfo[] files = directory.GetFiles();
@@ -146,7 +152,6 @@ namespace FileBackupService
                 catch (Exception e)
                 {
                     Common.Reports.Reporter.LogException(e);
-                    continue;
                 }
             }
 

@@ -30,7 +30,6 @@ D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\Common.dll
 D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\Prism.dll
 D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\System.ValueTuple.dll
 D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\Common.pdb
-D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\Prism.pdb
 D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\Prism.xml
 D:\Guillaume\Desktop\Internet Explorer\FileBackupService\bin\Release\System.ValueTuple.xml
 D:\Guillaume\Desktop\Internet Explorer\FileBackupService\obj\Release\FileBackup.csproj.CopyComplete
