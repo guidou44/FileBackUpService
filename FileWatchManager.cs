@@ -89,7 +89,17 @@ namespace FileBackupService
         {
             bool IsDirecotry = false;
             FileSystemInfo source;
-            FileAttributes sourceAttribute = File.GetAttributes(sourceName);
+            FileAttributes sourceAttribute = FileAttributes.Offline;
+            try
+            {
+                sourceAttribute = File.GetAttributes(sourceName);
+
+            }
+            catch (Exception e)
+            {
+                throw new FileLoadException(e.Message);
+            }
+            
             if (sourceAttribute.HasFlag(FileAttributes.Directory))
             {
                 source = new DirectoryInfo(sourceName);
