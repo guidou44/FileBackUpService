@@ -1,0 +1,13 @@
+*.suo
+*.user
+*.sln.docstates
+*.cache
+*.pcap
+*.ide-wal
+*.ide-shm
+*.ide
+*.pdb
+*.build.force
+ComputerRessourcesMonitoring/.vs/*
+
+
