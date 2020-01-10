@@ -97,7 +97,7 @@ namespace FileBackupService
             }
             catch (Exception e)
             {
-                throw new FileLoadException(e.Message);
+                return;
             }
             
             if (sourceAttribute.HasFlag(FileAttributes.Directory))
